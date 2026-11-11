@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Meteor Wallpaper</title>
+  <link rel="stylesheet" href="./style.css" />
+  <script>
+    // Installed before the scene module so a parse error is still reported to the host.
+    window.__mwReady = false;
+    function mwReport(msg) {
+      try { chrome.webview.postMessage({ type: 'error', msg: String(msg) }); } catch (_) { }
+    }
+    window.addEventListener('error', function (e) {
+      mwReport((e.message || 'script error') + ' @ ' + (e.filename || '') + ':' + (e.lineno || 0));
+    });
+    window.addEventListener('unhandledrejection', function (e) {
+      mwReport('unhandled rejection: ' + String(e.reason));
+    });
+    setTimeout(function () {
+      if (!window.__mwReady) mwReport('scene did not report ready within 12s');
+    }, 12000);
+  </script>
+</head>
+<body>
+  <div id="stage">
+    <canvas id="scene"></canvas>
+    <div id="vignette"></div>
+    <div id="hint">拖拽旋转 · 滚轮缩放 · Esc 返回桌面</div>
+  </div>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
