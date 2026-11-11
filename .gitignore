@@ -1,0 +1,28 @@
+# 构建产物
+bin/
+obj/
+dist/
+.tmp/
+.appdata/
+.dhome/
+.nuget/
+.sdk/
+.edgetmp/
+.edgetmp2/
+*.zip
+
+# 运行时数据（绿色版把日志/配置写在程序目录）
+data/
+settings.json
+*.log
+
+# 编辑器 / 系统
+.vs/
+.vscode/
+*.user
+*.suo
+Thumbs.db
+Desktop.ini
+
+# 开发期截图（可直接用 tools/preview_spec.py 重新生成）
+shots/
